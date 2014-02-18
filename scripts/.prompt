@@ -1,0 +1,29 @@
+#!/bin/bash
+
+function parse_git_branch_and_add_brackets {
+ /usr/local/git/bin/git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
+}
+
+RED="\[\033[0;31m\]" #green
+GRN="\[\033[0;32m\]" #green
+YEL="\[\033[0;33m\]" #yellow
+BLU="\[\033[0;34m\]" #brown
+PUR="\[\033[0;35m\]" #purple
+CYN="\[\033[0;36m\]" #cyan
+COLOR_RESET="\[\033[0m\]"
+
+NM="\[\033[0;38m\]" #means no background and white lines
+HIB=$GRN #change this for bg colors
+SI=$YEL #this is for the current directory
+IN="\[\033[0m\]"
+DT=$PUR
+
+function get_dir() {
+  pwd | grep -o [^\/][^\/]*\/[^\/][^\/]*$
+}
+
+function get_prompt() {
+       #2 directories        git branch
+  echo "$SI\$(get_dir)$HIB\$(parse_git_branch_and_add_brackets)$IN: "
+}
+export PS1=`get_prompt`

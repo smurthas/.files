@@ -24,6 +24,15 @@ function get_dir() {
 
 function get_prompt() {
        #2 directories        git branch
-  echo "$SI\$(get_dir)$HIB\$(parse_git_branch_and_add_brackets)$IN: "
+  echo "$SI\$(get_dir)$HIB\$(parse_git_branch_and_add_brackets)`user_at_host`$COLOR_RESET: "
 }
+
+function user_at_host() {
+  # if we're connected over SSH, show the user and hostname
+  if [ "$SSH_CONNECTION" != "" ]
+  then
+    echo -n " $CYN|$USER@$HOSTNAME|"
+  fi
+}
+
 export PS1=`get_prompt`

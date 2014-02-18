@@ -23,16 +23,19 @@ do
   cp -r $f $home_filename
 done
 
-echo "Emojifying..."
-TMP_DIR=/tmp/psemoji
-if [ -d $TMP_DIR ]
+if [ "$1" == "--emoji" ]
 then
-  rm -rf $TMP_DIR
-fi
+  echo "Emojifying..."
+  TMP_DIR=/tmp/psemoji
+  if [ -d $TMP_DIR ]
+  then
+    rm -rf $TMP_DIR
+  fi
 
-git clone https://github.com/smurthas/psemoji.git $TMP_DIR
-# install it
-$TMP_DIR/👍
+  git clone https://github.com/smurthas/psemoji.git $TMP_DIR
+  # install it
+  $TMP_DIR/👍
+fi
 
 echo
 echo Done!

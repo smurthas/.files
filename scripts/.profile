@@ -1,5 +1,8 @@
 # secrets and local paths
-source ~/.local
+if [ -f $HOME/.local ]
+then
+  source $HOME/.local
+fi
 
 # bashaliases
 source $HOME/.bash_aliases
@@ -21,8 +24,5 @@ complete -F _compssh ssh
 
 export EDITOR=/usr/bin/vim
 
-#node
+# node
 export NODE_PATH=lib
-
-# psemoji prompt modification 🚲
-source /Users/Simon/.🚲/🚲

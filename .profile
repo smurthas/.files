@@ -1,3 +1,5 @@
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # secrets and local paths
 if [ -f $HOME/.local ]
 then
@@ -5,14 +7,14 @@ then
 fi
 
 # bashaliases
-source $HOME/.bash_aliases
+source $DIR/.bash_aliases
 
 # pretty prompt
-source $HOME/.prompt
+source $DIR/.prompt
 
 # completion
-source $HOME/.docker-completion
-source $HOME/.git-completion
+source $DIR/.docker-completion
+source $DIR/.git-completion
 
 _compssh ()
 {

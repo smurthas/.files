@@ -1,0 +1,78 @@
+[user]
+  name = Simon Murtha Smith
+  email = simon@murtha-smith.com
+[github]
+  user = smurthas
+
+[alias]
+  bubble = !sh -c 'git checkout master && git pull && git checkout $1 && git rebase master && git checkout master && git merge --no-ff $1' -
+  br = branch
+  bush = !git push -u origin `git symbolic-ref --short HEAD`
+  changes = !sh -c 'git diff --stat $1 | tail -1' -
+  cd = checkout dev
+  cm = checkout master
+  co = checkout
+  conflicts = !vim $(git status | fgrep modified | cut -d: -f2)
+  cur = name-rev --name-only HEAD
+  deploy = push heroku master
+  form = !git fetch origin && git rebase origin/master
+  fix  = commit -m "Fixup"
+  horse-around = push production stable:master
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  last = log -1
+  pr = !hub pull-request -b apartmentlist:dev
+  remaster = rebase origin/master
+  rev = rebase origin/dev
+  st = status
+  sub = !cd $(git rev-parse --show-toplevel) && git submodule update --init | fgrep -v registered
+  v = rev-parse HEAD
+
+[apply]
+  whitespace = fix
+
+[color]
+  ui = auto
+[color "branch"]
+  current = green reverse
+  local = green
+  remote = cyan
+[color "diff"]
+  commit = magenta
+  frag = cyan
+  new = green
+  old = red
+  whitespace = yellow reverse
+[color "interactive"]
+  prompt = green
+  header = cyan
+  help = yellow
+  error = red
+[color "status"]
+  changed = yellow
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+
+[help]
+  autocorrect = 5
+
+[merge]
+  log = 100
+
+[push]
+  default = simple
+
+[rerere]
+  enabled = 1
+
+[branch]
+  autosetuprebase = remote
+
+[branch "master"]
+  rebase = true
+
+[credential]
+  helper = osxkeychain
+[rebase]
+  autosquash = true

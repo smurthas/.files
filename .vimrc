@@ -56,10 +56,11 @@ let g:CommandTMaxHeight=10
 let g:gist_clip_command = 'pbcopy'
 
 " JSLint Options
-let $JS_CMD = 'node'
+"let $JS_CMD = 'node'
 
 " Syntastic Options
 let g:syntastic_auto_loc_list=1
+let g:syntastic_javascript_checkers = ['jshint']
 
 highlight MatchParen   cterm=bold      ctermfg=1     ctermbg=0
 highlight OverLength   cterm=none      ctermfg=130   ctermbg=0
@@ -131,3 +132,5 @@ imap jj <ESC>
 imap kk <ESC>
 imap uu <ESC>O
 imap ;w <ESC>:w
+
+

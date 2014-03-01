@@ -1,0 +1,59 @@
+{
+  "curly": false,
+  "laxbreak": false,
+  "loopfunc": false,
+  "onevar": false,
+  "strict": false,
+
+  "bitwise": true,
+  "browser": true,
+  "eqeqeq": true,
+  "immed": true,
+  "latedef": true,
+  "noarg": true,
+  "node": true,
+  "newcap": true,
+  "noempty": true,
+  "nonew": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+
+  "indent": 2,
+
+  "maxerr": 1000,
+  "maxparams": 5,
+  "maxdepth": 5,
+  "maxstatements": 35,
+  "maxcomplexity": 10,
+
+  "predef": [
+    "console",
+    "exports",
+    "module",
+    "process",
+    "require",
+
+    "__dirname",
+
+    "btoa",
+
+    "document",
+    "window",
+
+    "setTimeout",
+    "clearTimeout",
+
+    "setInterval",
+    "clearInterval",
+
+    "describe",
+    "xdescribe",
+    "before",
+    "beforeEach",
+    "afterEach",
+    "after",
+    "it",
+    "xit"
+  ]
+}

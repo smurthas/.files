@@ -1,5 +1,12 @@
 alias e="vim"
-alias l="pwd && ls -lahG"
+
+# ls options are different on linux and mac
+if [[ "`uname`" == "Linux" ]]; then
+  alias l="pwd && ls -lah --color=auto"
+else
+  alias l="pwd && ls -lahG"
+fi
+
 alias tl="tail -n 250 -f"
 alias sl="mdfind -onlyin ."
 

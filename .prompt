@@ -19,7 +19,7 @@ IN="\[\033[0m\]"
 DT=$PUR
 
 function get_dir() {
-  pwd | grep -o [^\/][^\/]*\/[^\/][^\/]*$
+  pwd | grep -o [^\/][^\/]*\/[^\/][^\/]*$ || pwd
 }
 
 function get_prompt() {

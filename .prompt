@@ -4,7 +4,7 @@ function parse_git_branch_and_add_brackets {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
-RED="\[\033[0;31m\]" #green
+RED="\[\033[0;31m\]" #red
 GRN="\[\033[0;32m\]" #green
 YEL="\[\033[0;33m\]" #yellow
 BLU="\[\033[0;34m\]" #brown
@@ -19,19 +19,26 @@ IN="\[\033[0m\]"
 DT=$PUR
 
 function get_dir() {
-  pwd | grep -o [^\/][^\/]*\/[^\/][^\/]*$ || pwd
+  p=`pwd`
+  if [[ "$p" == "$HOME" ]]; then
+    echo "🏠 "
+  else
+    echo ${p/$HOME/🏠 } | grep -o [^\/][^\/]*\/[^\/][^\/]*$ || pwd
+  fi
+
 }
 
 function get_prompt() {
        #2 directories        git branch
-  echo "$SI\$(get_dir)$HIB\$(parse_git_branch_and_add_brackets)`user_at_host`$COLOR_RESET: "
+  echo "\e]2;\$(get_dir)\a$SI\$(get_dir)$HIB\$(parse_git_branch_and_add_brackets)`user_at_host`$COLOR_RESET: "
 }
 
 function user_at_host() {
   # if we're connected over SSH, show the user and hostname
   if [ "$SSH_CONNECTION" != "" ]
   then
-    echo -n " $CYN|$USER@$HOSTNAME|"
+    color="\033[0;$(expr $(expr `echo $((0x\`hostname | md5\`))` % 6) + 31)m"
+    echo -n " $color|$USER@$HOSTNAME|$COLOR_RESET"
   fi
 }
 

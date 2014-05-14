@@ -31,6 +31,7 @@ function grao() {
   git remote add origin git@github.com:smurthas/$@.git
 }
 
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias pubkeycopy="cat ~/.ssh/id_rsa.pub | pbcopy"
 alias ft="open facetime://"
 alias m="mate"

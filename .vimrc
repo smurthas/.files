@@ -62,6 +62,9 @@ let g:gist_clip_command = 'pbcopy'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_javascript_checkers = ['jshint']
 
+" Mustache
+let g:mustache_abbreviations = 1
+
 highlight MatchParen   cterm=bold      ctermfg=1     ctermbg=0
 highlight OverLength   cterm=none      ctermfg=130   ctermbg=0
 highlight Pmenu                                      ctermbg=8

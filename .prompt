@@ -34,10 +34,25 @@ function get_prompt() {
 }
 
 function user_at_host() {
+  md5=$(which md5 || which md5sum)
   # if we're connected over SSH, show the user and hostname
   if [ "$SSH_CONNECTION" != "" ]
   then
-    color="\033[0;$(expr $(expr `echo $((0x\`hostname | md5\`))` % 6) + 31)m"
+    # hash the hostname, convert to decimal, and mod 6
+    number=$(expr `echo $((0x\`hostname | $md5 | awk '{print $1}'\`))` % 6)
+
+    # take the absolute value
+    number=`echo ${number#-}`
+
+    # add it to 31 (fg colors are 31-37)
+    number=$(expr $number + 31)
+
+    # create the color string
+    color="\033[0;$number"m
+
+    # debug
+    #echo color $color 1>&2
+
     echo -n " $color|$USER@$HOSTNAME|$COLOR_RESET"
   fi
 }

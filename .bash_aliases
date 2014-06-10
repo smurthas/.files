@@ -46,6 +46,8 @@ function mylocalip() {
 
 alias pbgist='node ~/dev/smurthas/gistpaste/index.js'
 
+alias npml="npm --registry http://localhost:5984"
+
 #list .js files
 function ljs() {
   find . \( -name node_modules -prune \) -o \( -name Me -prune \) -o \( -name jquery-*.js -prune \) -o \( -name "*.js" \)
@@ -113,4 +115,29 @@ function scratch () {
 function map () {
   URL="https://www.google.com/maps/preview#!q=$1"
   open $URL
+}
+
+function idonethis () {
+  done_date=`date "+%Y-%m-%d"`
+  session_id=$IDONETHIS_SESSION_ID
+  csrf_token=$IDONETHIS_CSRF_TOKEN
+  email=$IDONETHIS_EMAIL
+  cal=$IDONETHIS_CALENDAR
+  done=`printf '%s ' "$@" | sed 's/ *$//'`
+  data="{\"done_date\":\"$done_date\",\"text\":\"$done\"}"
+
+  cookie="Cookie: sessionid=$session_id; csrftoken=$csrf_token;"
+  curl -sS -X POST "https://idonethis.com/api/v3/team/$cal/dones/" \
+      -H "$cookie" \
+      -H "Content-Type: application/json" \
+      -H "Referer:https://idonethis.com/cal/$cal/" \
+      -H "Host:idonethis.com" \
+      -H "Origin:https://idonethis.com" \
+      -H "X-CSRFToken:$csrf_token" \
+      -d "$data" | jsonstr | grep "  \"text\": " | cut -c 11-
+}
+
+
+function jurl () {
+  curl $@ | prettyjson
 }

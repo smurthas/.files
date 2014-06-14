@@ -4,7 +4,8 @@ alias e="vim"
 if [[ "`uname`" == "Linux" ]]; then
   alias l="pwd && ls -lah --color=auto"
 else
-  alias l="pwd && ls -lahG"
+  export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+  alias l="pwd && ls -lahGp"
 fi
 
 alias tl="tail -n 250 -f"
@@ -30,6 +31,7 @@ alias gpr="git pull --rebase"
 function grao() {
   git remote add origin git@github.com:smurthas/$@.git
 }
+alias gitjk="history 10 | tail -r | gitjk_cmd"
 
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias pubkeycopy="cat ~/.ssh/id_rsa.pub | pbcopy"
@@ -47,6 +49,19 @@ function mylocalip() {
 alias pbgist='node ~/dev/smurthas/gistpaste/index.js'
 
 alias npml="npm --registry http://localhost:5984"
+
+alias cov="open coverage/lcov-report/index.html"
+
+
+
+# AppC Single Image
+function node-acs-update() {
+  ssh-add
+  ssh -A vagrantd "sudo sed -i.bak 's/https:\/\/github.com\//git@github.com:/g' /opt/appcelerator/code/acs-base-deployment/utilities/update-code/update_appcimage.sh && sudo /opt/appcelerator/code/acs-base-deployment/utilities/update-code/update_appcimage.sh -p node-acs -gc"
+}
+
+alias node-acs-log-nettle="ssh vagrantd 'tail -f -n 100 /log/node-acs-nettle-server/local-nettle-server.log'"
+alias node-acs-log-stratus="ssh vagrantd 'tail -f -n 100 /log/node-acs-stratus/stratus.log'"
 
 #list .js files
 function ljs() {
@@ -138,6 +153,6 @@ function idonethis () {
 }
 
 
-function jurl () {
-  curl $@ | prettyjson
-}
+#function jurl () {
+#  curl $@ | prettyjson
+#}

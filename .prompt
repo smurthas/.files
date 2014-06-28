@@ -43,8 +43,8 @@ source ~/.🚲/🚲
 #export PS1=$PSE_STANDARD
 
 # PS emoji stuff
-export PS1=$PS1$PSE_EXIT_CODE_WARNING
-export PS1=$PS1$PSE_SEASONAL
+export PS1=$PS1$PSE_WARNINGS
+export PS1=$PS1$PSE_CHRONO
 export PS1=$PS1"$PURPLE\$(date +\"%T\")$COLOR_RESET "
 export PS1=$PS1$PSE_WEATHER
 

@@ -65,6 +65,14 @@ let g:syntastic_javascript_checkers = ['jshint']
 " Mustache
 let g:mustache_abbreviations = 1
 
+" ternjs for omnicomplete
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+
+" activate omnicomplete with CTRL-c
+imap <C-space> <C-x><C-o>
+imap <C-@> <C-space>
+
 highlight MatchParen   cterm=bold      ctermfg=1     ctermbg=0
 highlight OverLength   cterm=none      ctermfg=130   ctermbg=0
 highlight Pmenu                                      ctermbg=8
@@ -126,6 +134,7 @@ let @y = '/#todov/#doney'
 
 " node macros
 let @e = 'Iconsole.error(''lv$hyA'', pA);'
+let @l = 'iconsole.log('''');hhi'
 let @r = 'vbyivar pa = require(''A'');'
 let @n = 'i{A}'
 let @c = 'd$Opj0v^hykPj'

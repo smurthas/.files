@@ -1,5 +1,11 @@
 alias e="vim"
 
+# baaaad tiper
+alias cim="vim"
+alias bim="vim"
+alias im="vim"
+alias v="vim"
+
 # ls options are different on linux and mac
 if [[ "`uname`" == "Linux" ]]; then
   alias l="pwd && ls -lah --color=auto"
@@ -7,6 +13,8 @@ else
   export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
   alias l="pwd && ls -lahGp"
 fi
+
+alias ll="l"
 
 alias tl="tail -n 250 -f"
 alias sl="mdfind -onlyin ."
@@ -156,3 +164,17 @@ function idonethis () {
 #function jurl () {
 #  curl $@ | prettyjson
 #}
+
+function hang() {
+  open -a /Applications/Safari.app http://bit.ly/$1
+}
+alias standup="hang mwstandup"
+
+
+function post() {
+  curl -X POST $@
+}
+
+function postjson() {
+  post -H 'Content-Type:application/json' $@
+}

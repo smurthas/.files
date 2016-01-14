@@ -60,7 +60,7 @@ let g:gist_clip_command = 'pbcopy'
 
 " Syntastic Options
 let g:syntastic_auto_loc_list=1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Mustache
 let g:mustache_abbreviations = 1
@@ -135,7 +135,7 @@ let @y = '/#todov/#doney'
 " node macros
 let @e = 'Iconsole.error(''lv$hyA'', pA);'
 let @l = 'iconsole.log('''');hhi'
-let @r = 'vbyivar pa = require(''A'');'
+let @r = 'vbyiconst pa = require(''A'');'
 let @n = 'i{A}'
 let @c = 'd$Opj0v^hykPj'
 

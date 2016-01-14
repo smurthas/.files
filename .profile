@@ -1,3 +1,6 @@
+export NVM_DIR="/Users/smurthas/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # secrets and local paths
@@ -59,3 +62,4 @@ export PATH=$PATH:$GOPATH/bin
 # psemoji prompt modification 🚲
 #source /Users/Simon/.🚲/🚲
 #export PS1=$PSE_STANDARD$(date +"%T")\[\033[0m\] \e]2;\a$(parse_git_branch_and_add_brackets)\[\033[0m\]\n∂:
+

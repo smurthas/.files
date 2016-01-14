@@ -4,6 +4,7 @@
   "loopfunc": false,
   "onevar": false,
   "strict": false,
+  "esnext": true,
 
   "bitwise": true,
   "browser": true,

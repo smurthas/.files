@@ -12,6 +12,7 @@
   cd = checkout dev
   cm = checkout master
   co = checkout
+  cp = cherry-pick
   conflicts = !vim $(git status | fgrep modified | cut -d: -f2)
   cur = name-rev --name-only HEAD
   deploy = push heroku master
@@ -26,6 +27,14 @@
   st = status
   sub = !cd $(git rev-parse --show-toplevel) && git submodule update --init | fgrep -v registered
   v = rev-parse HEAD
+  # Get the current branch name (not so useful in itself, but used in
+  # other aliases)
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+  # Push the current branch to the remote "origin", and set it to track
+  # the upstream branch
+  publish = "!git push -u origin $(git branch-name)"
+  # Unstage any files that have been added to the staging area
+  unstage = reset HEAD
 
 [apply]
   whitespace = fix
